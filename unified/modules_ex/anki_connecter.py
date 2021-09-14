@@ -23,17 +23,17 @@ class AnkiConnecter:
         notes = list()
         for note in note_infos:
             notes.append(note['fields'][self.__FIRST_FIELD]['value'])
-        self.__printProcess("getting notes......")
+        self.__printProcess("Anki에서 노트를 가져오는 중입니다......")
         return tuple(notes)
 
     def __getNoteInfos(self):
-        self.__printProcess("getting note infos......")
+        self.__printProcess("Anki에서 노트 정보를 가져오는 중입니다......")
         return self.__invoke("notesInfo", {"notes": self.__getNoteIDs()})['result']
 
     def __getNoteIDs(self):
         param = {'query': "deck:"+self.__DECK_NAME}
         note_ids = self.__invoke('findNotes', param)['result']
-        self.__printProcess("getting note Ids......")
+        self.__printProcess("Anki에서 노트 아이디를 가져오는 중입니다......")
         return note_ids
 
     def __invoke(self, action, params):
@@ -92,14 +92,14 @@ class AnkiConnecter:
  
     def addAllStagedNotes(self):
         self.__invoke("addNotes", {'notes': self.__staged_notes})
-        self.__printProcess("adding all staged notes......")
+        self.__printProcess("중복 없는 노트를 추가하는 중입니다......")
     
     def updateAllStagedDuplicatedNotes(self):
         duplicated_note_ids = tuple(self.__staged_notes_duplicated.keys())
         quantity_total_cards = len(duplicated_note_ids)
 
         self.__printEngsOfStagedDuplicatedNotes(duplicated_note_ids)
-        self.__printProcess("updating all staged duplicated notes......")
+        self.__printProcess("중복 있는 노트를 업데이트하는 중입니다......")
         print()
 
         count = 1
@@ -111,7 +111,7 @@ class AnkiConnecter:
             count += 1
     
     def __printEngsOfStagedDuplicatedNotes(self, duplicated_note_ids):
-        print("<List of duplicated notes>")
+        print("<중복 있는 노트들>")
         count = 1
         for duplicated_note_id in duplicated_note_ids:
             print(str(count) + " : " + self.__staged_notes_duplicated[duplicated_note_id]['fields']['English'])
@@ -130,18 +130,18 @@ class AnkiConnecter:
         param['note']['fields']['Korean'] = new_kor
         param['note']['fields']['example-sentence'] = new_example_sentence
         self.__invoke('updateNoteFields', param) 
-        self.__printProcess("updating note fields......")
+        self.__printProcess("노트 필드를 업데이트하는 중입니다......")
     
     def __forgetNote(self, duplicate_note_id):
         cards = self.__findCards(duplicate_note_id) 
         param = {"cards":cards}
         self.__invoke("forgetCards", param)
-        self.__printProcess("forgetting notes......")
+        self.__printProcess("노트를 초기화하는 중입니다......")
     
     def __findCards(self, duplicate_note_id):
         param = {"query": "nid:"+str(duplicate_note_id)} #nid : note id
         result = self.__invoke("findCards", param)
-        self.__printProcess("finding cards......")
+        self.__printProcess("카드를 찾는 중입니다......")
         return result['result']
 
 def test():
