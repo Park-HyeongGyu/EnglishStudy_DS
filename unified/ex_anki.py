@@ -38,9 +38,9 @@ def main():
 
     handle_csv = HandleCsv()
     new_words = handle_csv.read(file_name_new_words)
-    # structure of new_words = [english, korean, tag]
-    if len(new_words[0]) >= 4:
-        raise Exception("members of new words should be smaller than 3(english, meaning, tag)")
+    # structure of new_words = [english, korean]
+    if len(new_words[0]) >= 3:
+        raise Exception("members of new words should be smaller than 2(english, meaning)")
 
     find_sentence_include_word = FindSentenceIncludeWordNlp(parsed_example_sentences)
     
@@ -51,8 +51,7 @@ def main():
         example_to_append = ""
         english = line[0]
         meaning = line[1]
-        tag = line[2]
-        print(english,"-", meaning, "tag :", tag)
+        print(english,"-", meaning)
         example_of_word = find_sentence_include_word.find(english)
 
         if len(example_of_word) == 0:
@@ -81,7 +80,6 @@ def main():
         note_for_param.setEnglish(english)        
         note_for_param.setKorean(meaning)
         note_for_param.setExampleSentence(example_to_append)
-        note_for_param.setTag(tag)
 
         anki_connecter.stageNote(note_for_param)
         print()

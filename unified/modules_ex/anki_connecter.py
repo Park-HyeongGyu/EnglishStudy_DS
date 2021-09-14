@@ -56,7 +56,6 @@ class AnkiConnecter:
         note_copied.setEnglish(note.getEnglish())
         note_copied.setKorean(note.getKorean()) 
         note_copied.setExampleSentence(note.getExampleSentence())
-        note_copied.setTagList(note.getTags())
         # I don't know why I should do a action of copying like it.
         # When I used this function while not copying note, there was an error.
         # I think there will be a more good answer.
@@ -88,7 +87,6 @@ class AnkiConnecter:
                 note_to_return.setEnglish(one['fields']['English']['value'])
                 note_to_return.setKorean(one['fields']['Korean']['value'])
                 note_to_return.setExampleSentence(one['fields']['example-sentence']['value'])
-                note_to_return.setTagList(one['tags'])
                 note_id = one['noteId']
                 return {"noteId": note_id, "note": note_to_return.getJson()}
  
@@ -109,8 +107,6 @@ class AnkiConnecter:
             eng = self.__staged_notes_duplicated[duplicated_note_id]['fields']['English']
             print("(" + str(count) + "/" + str(quantity_total_cards) + ") : " + eng)
             self.__updateNoteFields(duplicated_note_id)
-            tag = self.__staged_notes_duplicated[duplicated_note_id]['tags'][0]
-            self.__updateTags(tag, duplicated_note_id)
             self.__forgetNote(duplicated_note_id)
             count += 1
     
@@ -136,15 +132,6 @@ class AnkiConnecter:
         self.__invoke('updateNoteFields', param) 
         self.__printProcess("updating note fields......")
     
-    def __updateTags(self, tag, duplicated_note_id):
-        if str(type(tag)) != "<class 'str'>":
-            raise Exception("Type of tag should be str.")
-        param = dict()    
-        param['notes'] = [duplicated_note_id]
-        param['tags'] = tag
-        self.__invoke('addTags', param)
-        self.__printProcess("updating tags......")
-    
     def __forgetNote(self, duplicate_note_id):
         cards = self.__findCards(duplicate_note_id) 
         param = {"cards":cards}
@@ -158,23 +145,7 @@ class AnkiConnecter:
         return result['result']
 
 def test():
-    a = NoteEngExampleSentence()
-    connect = AnkiConnecter()
-    for count in range(10):
-        a.setEnglish(str(count)+" eng")
-        a.setKorean(str(count)+" kor")
-        a.setExampleSentence(str(count)+ "example")
-        a.setTag('connect_testing')
-        connect.stageNote(a)
-    b = NoteEngExampleSentence()
-    b.setEnglish('invest')
-    b.setKorean('ddd')
-    b.setExampleSentence('newddfdasfdafda')
-    b.setTag("dd")
-    connect.stageNote(b)
-
-    connect.addAllStagedNotes()
-    connect.updateAllStagedDuplicatedNotes()
+    pass
 
 if __name__ == "__main__":
     test()
