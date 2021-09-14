@@ -1,5 +1,5 @@
 {
-    "deckName": "002_ForSNU_Eng",
+    "deckName": "English_suneung",
     "modelName": "Eng_example-sentence",
     "fields": ["English", "Korean", "example-sentence"],
     "allowDuplicate": false,
