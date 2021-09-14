@@ -17,7 +17,6 @@ class NoteEngExampleSentence:
         self.note['options']['duplicateScopeOptions'] = dict()
         self.note['options']['duplicateScopeOptions']['deckName'] = param_fields['deckName']
         self.note['options']['duplicateScopeOptions']['checkChildren'] = param_fields['checkChildren']
-        self.note['tags'] = list()
     
     def setEnglish(self, word):
         self.note['fields']['English'] = word
@@ -25,17 +24,6 @@ class NoteEngExampleSentence:
         self.note['fields']['Korean'] = word
     def setExampleSentence(self, sentence):
         self.note['fields']['example-sentence'] = sentence
-    def setTag(self, tag):
-        if str(type(tag)) != "<class 'str'>":
-            raise Exception("Type of tag should be a str.")
-        self.note['tags'] = [tag]
-    def setTagList(self, tag_list):
-        if str(type(tag_list)) != "<class 'list'>" and str(type(tag_list)) != "<class 'tuple'>":
-            raise Exception("Type of tag_list should be a list or a tuple.")
-        self.note['tags'] = tag_list
-    def addTag(self, *tags):
-        for tag in tags:
-            self.note['tags'].append(tag)
     
     def getEnglish(self):
         return self.note['fields']['English']
@@ -43,8 +31,6 @@ class NoteEngExampleSentence:
         return self.note['fields']['Korean']
     def getExampleSentence(self):
         return self.note['fields']['example-sentence']
-    def getTags(self):
-        return self.note['tags']
     
     def getJson(self):
         return self.note
