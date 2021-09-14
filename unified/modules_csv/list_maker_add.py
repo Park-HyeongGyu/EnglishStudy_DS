@@ -29,7 +29,7 @@ def list_maker(filename_with_path_ended_with_csv):
     queue = CircularQueue(QUEUE_SIZE)
 
     for_csv = csvs(filename_with_path_ended_with_csv) 
-    column = int(input("input a column : "))
+    column = 2
     line = for_csv.reader() + 1
     print("if you input 'end' then the input proceds end")
 
@@ -39,7 +39,10 @@ def list_maker(filename_with_path_ended_with_csv):
         count = 0
         content_list = []
         while count < column:
-            tem = input(str(line)+"_"+str(count) + ": ")
+            if count == 0:
+                tem = input(str(line)+"_"+"English : ")
+            elif count == 1:
+                tem = input(str(line)+"_"+"뜻 : ")
 
             if tem == "end":
                 is_end = True
