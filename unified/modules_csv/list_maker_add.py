@@ -31,7 +31,6 @@ def list_maker(filename_with_path_ended_with_csv):
 
     for_csv = csvs(filename_with_path_ended_with_csv) 
     column = int(input("input a column : "))
-    tag = input("input a tag : ")
     line = for_csv.reader() + 1
     print("if you input 'end' then the input proceds end")
 
@@ -80,7 +79,6 @@ def list_maker(filename_with_path_ended_with_csv):
             is_delete = False
             continue
 
-        content_list.append(tag)
         queue.Enqueue(content_list)
         if queue.IsFull():
             for_csv.adder(queue.Dequeue())
