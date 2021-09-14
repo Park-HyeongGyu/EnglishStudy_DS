@@ -1,9 +1,9 @@
-from modules.preprocess_example_sentences import PreprocessExampleSentences
-from modules.find_sentence_include_word import FindSentenceIncludeWordNlp
-from modules.handle_csv import HandleCsv
-from modules.split_by_sentence import SplitBySentence
-from modules.anki_connecter import AnkiConnecter
-from modules.note_eng_example_sentence import NoteEngExampleSentence
+from modules_ex.preprocess_example_sentences import PreprocessExampleSentences
+from modules_ex.find_sentence_include_word import FindSentenceIncludeWordNlp
+from modules_ex.handle_csv import HandleCsv
+from modules_ex.split_by_sentence import SplitBySentence
+from modules_ex.anki_connecter import AnkiConnecter
+from modules_ex.note_eng_example_sentence import NoteEngExampleSentence
 
 def description():
     print("this is program is prototype and is for temporary use.")
