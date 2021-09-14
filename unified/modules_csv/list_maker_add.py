@@ -1,6 +1,5 @@
 import csv
 from .data_structure import CircularQueue
-from .spell_checker import check_spell
 
 class csvs:
     def __init__(self, filename):
@@ -62,14 +61,6 @@ def list_maker(filename_with_path_ended_with_csv):
                 print("Copied :" , queue.Top()[count])
                 tem = queue.Top()[count]
             
-            if count == 0 and check_spell(tem.split()) != ():
-                for one_misspelled in check_spell(tem.split()):
-                    print("Misspelling!. misspelled:"+one_misspelled.misspelled, "/ recommended correction:"+one_misspelled.correction, "/ cadidates:"+str(one_misspelled.candidates))
-                is_amend = input("Amend? y/n : ")
-                if is_amend == 'y':
-                    print("Input again.")
-                    continue
-
             content_list.append(tem)
             count += 1
 
