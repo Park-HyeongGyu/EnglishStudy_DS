@@ -1,6 +1,6 @@
 import json
 import urllib.request
-from modules.note_eng_example_sentence import NoteEngExampleSentence
+from .note_eng_example_sentence import NoteEngExampleSentence
 
 class AnkiConnecter:
     def __init__(self):
