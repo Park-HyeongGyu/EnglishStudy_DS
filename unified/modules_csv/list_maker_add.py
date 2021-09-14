@@ -31,7 +31,7 @@ def list_maker(filename_with_path_ended_with_csv):
     for_csv = csvs(filename_with_path_ended_with_csv) 
     column = 2
     line = for_csv.reader() + 1
-    print("if you input 'end' then the input proceds end")
+    print("'end'라고 입력하면 입력 프로세스가 종료됩니다.")
 
     is_end = False
     is_delete = False
