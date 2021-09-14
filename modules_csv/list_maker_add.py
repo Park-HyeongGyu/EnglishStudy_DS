@@ -1,22 +1,4 @@
-import csv
 from .data_structure import CircularQueue
-
-class csvs:
-    def __init__(self, filename):
-        self.file_name = filename
-    def reader(self):
-        line_numbers = 0
-        try:
-            f = open(self.file_name, 'r', encoding = 'utf-8')
-            line_numbers = len(f.readlines())
-            f.close()
-        except:
-            line_numbers = 0
-        return line_numbers
-    def adder(self, content):
-        with open(self.file_name, 'a+', encoding = 'utf-8', newline='') as f:
-            wr = csv.writer(f)
-            wr.writerow(content)
 
 def IsStringContained(param_string, compare_list):
     for a in compare_list:
@@ -24,13 +6,14 @@ def IsStringContained(param_string, compare_list):
             return True
     return False
 
-def list_maker(filename_with_path_ended_with_csv):
+def list_maker():
     QUEUE_SIZE = 3
     queue = CircularQueue(QUEUE_SIZE)
 
-    for_csv = csvs(filename_with_path_ended_with_csv) 
-    column = 2
-    line = for_csv.reader() + 1
+    list_to_return = list()
+
+    COLUMN = 2
+    print("새 단어를 입력합니다.")
     print("'end'라고 입력하면 입력 프로세스가 종료됩니다.")
 
     is_end = False
@@ -38,7 +21,7 @@ def list_maker(filename_with_path_ended_with_csv):
     while True:
         count = 0
         content_list = []
-        while count < column:
+        while count < COLUMN:
             if count == 0:
                 tem = input(str(line)+"_"+"English : ")
             elif count == 1:
@@ -75,12 +58,14 @@ def list_maker(filename_with_path_ended_with_csv):
 
         queue.Enqueue(content_list)
         if queue.IsFull():
-            for_csv.adder(queue.Dequeue())
+            list_to_return.append(queue.Dequeue())
 
         line += 1
         print()
 
     while not queue.IsEmpty():
-        for_csv.adder(queue.Dequeue())
+        list_to_return.append(queue.Dequeue())
+    
+    return list_to_return
 #End of the maker
 
