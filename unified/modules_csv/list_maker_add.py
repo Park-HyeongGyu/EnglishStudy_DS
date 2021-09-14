@@ -6,13 +6,14 @@ def IsStringContained(param_string, compare_list):
             return True
     return False
 
-def list_maker(filename_with_path_ended_with_csv):
+def list_maker():
     QUEUE_SIZE = 3
     queue = CircularQueue(QUEUE_SIZE)
 
     list_to_return = list()
 
     COLUMN = 2
+    print("새 단어를 입력합니다.")
     print("'end'라고 입력하면 입력 프로세스가 종료됩니다.")
 
     is_end = False

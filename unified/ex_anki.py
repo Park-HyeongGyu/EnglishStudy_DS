@@ -1,6 +1,7 @@
+from modules_csv.description import Convenients
+from modules_csv.list_maker_add import list_maker
 from modules_ex.preprocess_example_sentences import PreprocessExampleSentences
 from modules_ex.find_sentence_include_word import FindSentenceIncludeWordNlp
-from modules_ex.handle_csv import HandleCsv
 from modules_ex.split_by_sentence import SplitBySentence
 from modules_ex.anki_connecter import AnkiConnecter
 from modules_ex.note_eng_example_sentence import NoteEngExampleSentence
@@ -13,12 +14,9 @@ def caution():
 def main():
     caution()
 
-    print("새 단어가 있는 파일의 이름을 입력하십시오.")
-    file_name_new_words = input("파일 이름 : ")
     print("예문이 있는 파일의 이름을 입력하십시오.")
     file_name_example_sentences = input("파일 이름 : ")
 
-    file_name_new_words = "contents/" + file_name_new_words
     file_name_example_sentences = "contents/" + file_name_example_sentences
 
     preprocess_example_sentence = PreprocessExampleSentences(file_name_example_sentences)
@@ -27,11 +25,9 @@ def main():
     split_by_sentence = SplitBySentence(example_sentences)
     parsed_example_sentences = split_by_sentence.getSentenceSplitted()
 
-    handle_csv = HandleCsv()
-    new_words = handle_csv.read(file_name_new_words)
+    Convenients()
+    new_words = list_maker()
     # structure of new_words = [english, korean]
-    if len(new_words[0]) >= 3:
-        raise Exception("members of new words should be smaller than 2(english, meaning)")
 
     find_sentence_include_word = FindSentenceIncludeWordNlp(parsed_example_sentences)
     
