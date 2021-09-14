@@ -1,8 +1,8 @@
-from modules_csv.description import *
+from modules_csv.description import Convenients
 from modules_csv.list_maker_add import list_maker
 
 def GetFilename():
-    a = input("Input file name : ")
+    a = input("만들 또는 수정될 파일 이름을 입력하세요 : ")
     to_return = a + ".csv"
     return to_return
 
@@ -17,9 +17,8 @@ def main():
     print("위의 폴더 안에 자동으로 .csv가 붙은 파일을 만들어줍니다.")
     print()
     Convenients()
-    HowMakeTag()
     list_maker(GetFilename())
-    print("Press enter to exit program......", end="")
+    print("프로그램을 종료하려면 엔터를 누르십시오......", end="")
     input()
 
 if __name__ == "__main__":
