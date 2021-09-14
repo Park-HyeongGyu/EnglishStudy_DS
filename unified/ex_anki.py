@@ -17,8 +17,6 @@ def main():
     print("예문이 있는 파일의 이름을 입력하십시오.")
     file_name_example_sentences = input("파일 이름 : ")
 
-    file_name_example_sentences = "contents/" + file_name_example_sentences
-
     preprocess_example_sentence = PreprocessExampleSentences(file_name_example_sentences)
     example_sentences = preprocess_example_sentence.get()
 
