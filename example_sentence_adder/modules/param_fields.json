@@ -1,0 +1,8 @@
+{
+    "deckName": "002_ForSNU_Eng",
+    "modelName": "Eng_example-sentence",
+    "fields": ["English", "Korean", "example-sentence"],
+    "allowDuplicate": false,
+    "duplicateScope": "deck",
+    "checkChildren": false
+}
