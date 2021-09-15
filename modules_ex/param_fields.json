@@ -1,0 +1,8 @@
+{
+    "deckName": "English_suneung",
+    "modelName": "Eng_example-sentence",
+    "fields": ["English", "Korean", "example-sentence"],
+    "allowDuplicate": false,
+    "duplicateScope": "deck",
+    "checkChildren": false
+}
