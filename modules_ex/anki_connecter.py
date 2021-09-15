@@ -4,7 +4,7 @@ from .note_eng_example_sentence import NoteEngExampleSentence
 
 class AnkiConnecter:
     def __init__(self):
-        with open('modules/param_fields.json', 'r') as f:
+        with open('modules_ex/param_fields.json', 'r') as f:
             param_field = json.load(f)
         self.__DECK_NAME = param_field['deckName']
         self.__FIRST_FIELD = param_field['fields'][0]

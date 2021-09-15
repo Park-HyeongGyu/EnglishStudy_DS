@@ -2,7 +2,7 @@ import json
 
 class NoteEngExampleSentence:
     def __init__(self):
-        with open('modules/param_fields.json', 'r') as f:
+        with open('modules_ex/param_fields.json', 'r') as f:
             param_fields = json.load(f)
         self.note = dict()
         self.note = dict()
