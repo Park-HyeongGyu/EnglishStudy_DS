@@ -18,6 +18,7 @@ def list_maker():
 
     is_end = False
     is_delete = False
+    line = 1
     while True:
         count = 0
         content_list = []
